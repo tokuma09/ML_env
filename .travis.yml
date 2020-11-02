@@ -16,4 +16,4 @@ deploy:
     - docker tag tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER} tokupooh0910/ml_env:latest
     - docker push tokupooh0910/ml_env:latest
   on:
-    branch: master
+    branch: main
