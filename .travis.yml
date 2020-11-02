@@ -6,11 +6,14 @@ before_install:
 scripts:
   - echo "No test here!"
 
-after_success:
-  - docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
+deploy:
+  provider: script
+  script:
+    - docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
+    - docker tag ml_env_python:latest tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
+    - docker push tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
 
-  - docker tag ml_env_python:latest tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
-  - docker push tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
-
-  - docker tag tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER} tokupooh0910/ml_env:latest
-  - docker push tokupooh0910/ml_env:latest
+    - docker tag tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER} tokupooh0910/ml_env:latest
+    - docker push tokupooh0910/ml_env:latest
+  on:
+    branch: master
