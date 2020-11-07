@@ -5,7 +5,10 @@ before_install:
   - docker build . -t ml_env_python:latest
 scripts:
   - echo "No test here!"
-after_success:
+
+deploy:
+  provider: script
+  script:
     - docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
     - docker tag ml_env_python:latest tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
     - docker push tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
