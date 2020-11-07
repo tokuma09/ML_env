@@ -8,17 +8,18 @@ ENV SHELL /bin/bash
 COPY ./requirements.txt /root/
 COPY ./start_notebook.sh /root/
 
-#RUN apt-get update && \
-#    apt-get install -y graphviz && \
-#    pip install --upgrade pip && \
-#    pip install -r requirements.txt
 
+# Install libraries
 RUN apt-get update && \
-    apt install -y fonts-ricty-diminished && \
+    apt-get install -y graphviz && \
+    apt-get autoremove -y &&\
+    apt-get clean &&\
+    rm -rf /usr/local/src/* && \
     pip install --upgrade pip && \
-    pip install jupyterlab
+    pip install --no-cache-dir -r  /root/requirements.txt
 
-# jupyter lab settings
+
+# make jupyter lab settings dir
 RUN mkdir -p /root/.jupyter/lab/user-settings/@jupyterlab/notebook-extension &&\
     mkdir -p /root/.jupyter/lab/user-settings/@jupyterlab/terminal-extension/plugin.jupyterlab-settings
 
