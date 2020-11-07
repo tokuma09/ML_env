@@ -1,14 +1,33 @@
-FROM python:3.8-slim
+FROM python:3.8
 
+LABEL maintainer="Tokuma Suzuki tokuma.suzuki09@gmail.com"
 
-COPY ./requirements.txt ./requirements.txt
+ENV SHELL /bin/bash
+
+# Copy libraries and shell scripts
+COPY ./requirements.txt /root/
+COPY ./start_notebook.sh /root/
+
+#RUN apt-get update && \
+#    apt-get install -y graphviz && \
+#    pip install --upgrade pip && \
+#    pip install -r requirements.txt
 
 RUN apt-get update && \
-    apt-get install -y graphviz && \
+    apt install -y fonts-ricty-diminished && \
     pip install --upgrade pip && \
-    pip install -r requirements.txt
+    pip install jupyterlab
 
-WORKDIR /project
+# jupyter lab settings
+RUN mkdir -p /root/.jupyter/lab/user-settings/@jupyterlab/notebook-extension &&\
+    mkdir -p /root/.jupyter/lab/user-settings/@jupyterlab/terminal-extension/plugin.jupyterlab-settings
 
-CMD ["/bin/bash", "-lc", "jupyter notebook --no-browser --port=8888 --ip=0.0.0.0 --allow-root --NotebookApp.token=''"]
-# CMD ["/bin/bash"]
+# copy setting files
+COPY ./jupyter_settings/tracker.jupyterlab-settings /root/.jupyter/lab/user-settings/@jupyterlab/notebook-extension/
+COPY ./jupyter_settings/plugin.jupyterlab-settings /root/.jupyter/lab/user-settings/@jupyterlab/terminal-extension/
+
+# determine working directory
+WORKDIR /root/project
+
+
+CMD ["/bin/bash", "../start_notebook.sh"]
