@@ -1,17 +1,16 @@
 services: docker
 before_install:
-  - docker build . -t ml_env_python:latest
+  - "docker build . -t ml_env_python:latest"
 script:
   - echo "No test here!"
-
 before_deploy:
   - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin;
 deploy:
   provider: script
-  script:
-    - docker tag ml_env_python:latest tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER};
-    docker push tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER};
-    docker tag tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER} tokupooh0910/ml_env:latest;
+  script: >-
+    docker tag ml_env_python:latest tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
+    docker push tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}; docker tag
+    tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER} tokupooh0910/ml_env:latest;
     docker push tokupooh0910/ml_env:latest;
   on:
     branch: main
