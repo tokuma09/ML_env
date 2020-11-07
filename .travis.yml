@@ -2,13 +2,10 @@ sudo: required
 
 services: docker
 before_install:
-  - docker-compose up --build -d
+  - docker build . -t ml_env_python:latest
 scripts:
   - echo "No test here!"
-
-deploy:
-  provider: script
-  script:
+after_success:
     - docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
     - docker tag ml_env_python:latest tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
     - docker push tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
