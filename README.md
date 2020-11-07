@@ -3,7 +3,6 @@
 This repository contains `Dockerfile` and `requirements.txt` for my ML projects.
 
 ## Usage
-- `docker-compose up --build -d`: build docker image
-- `docker-compose run python`: launch jupyter notebook
-- `docker-compose run /bin/bash`: launch bash
-- `docker-compose down`: Stops containers and removes containers
+
+- `docker build . -t {image name}:{tag}`: Build my docker image
+- `docker run -it --rm -p 8888:8888 {image name}:{tag}`:  Running my apps
