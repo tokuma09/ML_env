@@ -7,10 +7,10 @@ script:
 deploy:
   provider: script
   script:
-    echo "$DOCKER_PASSWORD" | docker login -username "$DOCKER_USERNAME" --password-stdin
-    docker tag ml_env_python:latest tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
-    docker push tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
-    docker tag tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER} tokupooh0910/ml_env:latest
-    docker push tokupooh0910/ml_env:latest
+    - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin;
+    docker tag ml_env_python:latest tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER};
+    docker push tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER};
+    docker tag tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER} tokupooh0910/ml_env:latest;
+    docker push tokupooh0910/ml_env:latest;
   on:
     branch: main
