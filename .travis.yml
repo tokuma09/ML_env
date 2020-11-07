@@ -9,11 +9,10 @@ scripts:
 deploy:
   provider: script
   script:
-    - docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
-    - docker tag ml_env_python:latest tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
-    - docker push tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
-
-    - docker tag tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER} tokupooh0910/ml_env:latest
-    - docker push tokupooh0910/ml_env:latest
+    docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" --password-stdin
+    docker tag ml_env_python:latest tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
+    docker push tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER}
+    docker tag tokupooh0910/ml_env:${TRAVIS_BUILD_NUMBER} tokupooh0910/ml_env:latest
+    docker push tokupooh0910/ml_env:latest
   on:
     branch: main
