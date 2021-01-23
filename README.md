@@ -2,6 +2,7 @@
 
 This repository contains `Dockerfile` and `requirements.txt` for my ML projects.
 
+Note that it is not supported GPU usage.
 ## 0. Usage
 
 - `docker build . -t {image name}:{tag}`: Build my docker image
