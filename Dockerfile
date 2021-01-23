@@ -12,15 +12,19 @@ COPY ./start_notebook.sh /root/
 # Install libraries
 RUN apt-get update && \
     apt-get install -y graphviz && \
+    # install awscli
+    apt-get install -y curl unzip jq less && \
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&\
+    unzip awscliv2.zip &&\
+    ./aws/install && \
     apt-get autoremove -y &&\
     apt-get clean &&\
+    # Install python libraries
     rm -rf /usr/local/src/* && \
     pip install --upgrade pip && \
-    pip install --no-cache-dir -r  /root/requirements.txt
-
-
-# make jupyter lab settings dir
-RUN mkdir -p /root/.jupyter/lab/user-settings/@jupyterlab/notebook-extension &&\
+    pip install --no-cache-dir -r  /root/requirements.txt && \
+    # make jupyter lab settings dir
+    mkdir -p /root/.jupyter/lab/user-settings/@jupyterlab/notebook-extension &&\
     mkdir -p /root/.jupyter/lab/user-settings/@jupyterlab/terminal-extension/plugin.jupyterlab-settings
 
 # copy setting files
