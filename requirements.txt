@@ -179,6 +179,9 @@ threadpoolctl==2.1.0
 tokenizers==0.9.4
 toml==0.10.2
 toposort==1.6
+torch==1.7.1
+torchtext==0.8.1
+torchvision==0.8.2
 tornado==6.1
 tqdm==4.56.0
 traitlets==5.0.5

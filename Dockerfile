@@ -33,6 +33,7 @@ COPY ./jupyter_settings/plugin.jupyterlab-settings /root/.jupyter/lab/user-setti
 
 # determine working directory
 WORKDIR /root/project
+COPY ./requirements.txt /root/project
 
 
 CMD ["/bin/bash", "../start_notebook.sh"]
