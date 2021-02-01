@@ -9,8 +9,8 @@ Note that it is not supported GPU usage.
 - `docker run -it --rm -p 8888:8888 {image name}:{tag}`:  Running my apps
 
 ## 1. Installed Apps
-- awscli
 - graphviz
+
 ## 2. Installed Python Libraries
 
 1. Basics
@@ -45,6 +45,7 @@ Note that it is not supported GPU usage.
 
 5. Misc
    - boto3
+   - google-cloud-strage
    - Jupyter Lab
    - pandas-profiling
    - Pillow

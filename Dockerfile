@@ -8,15 +8,9 @@ ENV SHELL /bin/bash
 COPY ./requirements.txt /root/
 COPY ./start_notebook.sh /root/
 
-
 # Install libraries
 RUN apt-get update && \
     apt-get install -y graphviz && \
-    # install awscli
-    apt-get install -y curl unzip jq less && \
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&\
-    unzip awscliv2.zip &&\
-    ./aws/install && \
     apt-get autoremove -y &&\
     apt-get clean &&\
     # Install python libraries
@@ -33,7 +27,5 @@ COPY ./jupyter_settings/plugin.jupyterlab-settings /root/.jupyter/lab/user-setti
 
 # determine working directory
 WORKDIR /root/project
-COPY ./requirements.txt /root/project
-
 
 CMD ["/bin/bash", "../start_notebook.sh"]
