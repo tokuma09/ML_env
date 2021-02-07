@@ -34,6 +34,7 @@ Note that it is not supported GPU usage.
    - SHAP
 
 3. MLOps
+   - neptune
    - MLflow
    - Kedro
    - Hydra
