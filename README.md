@@ -36,7 +36,6 @@ Note that it is not supported GPU usage.
 3. MLOps
    - neptune
    - MLflow
-   - Kedro
    - Hydra
 
 4. Formatter
