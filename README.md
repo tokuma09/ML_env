@@ -49,6 +49,7 @@ Note that it is not supported GPU usage.
    - Jupyter Lab
    - pandas-profiling
    - Pillow
+   - nbdime
 
 
 For feather information, You can see `requirements.txt` that describes the list of installed libraries with version.

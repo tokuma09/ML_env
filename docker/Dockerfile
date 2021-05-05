@@ -19,8 +19,8 @@ RUN apt-get update && \
     rm -rf /usr/local/src/* &&\
     # add libraries
     pip3 install --upgrade pip setuptools wheel &&\
-    pip3 install --no-cache-dir -r  /root/requirements.txt
-
+    pip3 install --no-cache-dir -r  /root/requirements.txt &&\
+    nbdime config-git --enable --global
 
 
 CMD ["/bin/bash", "../start_notebook.sh"]
