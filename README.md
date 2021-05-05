@@ -9,25 +9,27 @@ Note that it is not supported GPU usage.
 - `docker run -it --rm -p 8888:8888 {image name}:{tag}`:  Running my apps
 
 ## 1. Installed Apps
-- graphviz
 
+- graphviz
+- git
 ## 2. Installed Python Libraries
 
 1. Basics
    - numpy
    - scipy
    - pandas
+     - pyarrow
+     - openpyxl
    - matplotlib
    - seaborn
 
-
 2. ML
    - scikit-learn
-   - LightGBM:
+   - LightGBM
    - Catboost
    - XGboost
    - PyTorch, torchvision, torchtext
-   - Tensorflow, Keras, Tensorboard
+   - Tensorboard
    - Gensim
    - Transformers
    - Optuna
@@ -35,7 +37,6 @@ Note that it is not supported GPU usage.
 
 3. MLOps
    - neptune
-   - MLflow
    - Hydra
 
 4. Formatter
@@ -44,7 +45,6 @@ Note that it is not supported GPU usage.
    - isort
 
 5. Misc
-   - boto3
    - google-cloud-strage
    - Jupyter Lab
    - pandas-profiling
@@ -52,3 +52,9 @@ Note that it is not supported GPU usage.
 
 
 For feather information, You can see `requirements.txt` that describes the list of installed libraries with version.
+
+## Python Envirionment
+
+The above libraries are managed by `poetry`.
+
+- Generate `requirements.txt`: `poetry export -f requirements.txt --output requirements.txt --without-hashes`
