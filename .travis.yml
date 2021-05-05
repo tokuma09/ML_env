@@ -1,6 +1,6 @@
 services: docker
 before_install:
-  - "docker build . -t ml_env_python:latest"
+  - "docker build -t ml_env_python:latest -f $TRAVIS_BUILD_DIR/docker/Dockerfile ."
 script:
   - echo "No test here!"
 before_deploy:
