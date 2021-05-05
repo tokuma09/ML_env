@@ -37,6 +37,8 @@ openpyxl = "^3.0.7"
 tensorboard = "^2.5.0"
 jupyterlab = "^3.0.14"
 setuptools = "^56.1.0"
+psutil = "^5.8.0"
+pyarrow = "^4.0.0"
 
 [tool.poetry.dev-dependencies]
 
